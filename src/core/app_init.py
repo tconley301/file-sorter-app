@@ -37,13 +37,15 @@ class FileSorterApp(QMainWindow):
 
         self.setCentralWidget(self.ui)
         self.setWindowTitle("File Sorter")
+        self.resize(400, 300)
 
         # Menu bar
         menubar = self.menuBar()
-        file_menu = menubar.addMenu("File")
+        file_menu = menubar.addMenu("Help")
+        manual_button = file_menu.addAction("Manual")
         file_menu.addAction("Exit", self.close)
-        settings_menu = menubar.addMenu("Settings")
-        settings_menu.addAction("Mode")
+
+
 
         # Widgets
         self.addFolderButton = self.ui.findChild(QPushButton, "addFolderButton")
@@ -53,6 +55,8 @@ class FileSorterApp(QMainWindow):
 
         self.file_logic = FileLogic(self)
         self.ui_handler = UIHandler(self, self.file_logic)
+
+        manual_button.triggered.connect(self.ui_handler.on_manual_clicked)
 
     def closeEvent(self, event: QCloseEvent):
         """Save folder rules before the window closes."""
@@ -64,6 +68,7 @@ class FileSorterApp(QMainWindow):
 # =====================================================================
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setApplicationName("FileSorterApp")
     window = FileSorterApp()
     window.show()
     sys.exit(app.exec())

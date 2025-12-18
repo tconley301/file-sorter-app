@@ -13,6 +13,7 @@ from fs_utils.app_utils import Helper
 
 class UIHandler:
     def __init__(self, window, logic):
+
         self.window = window
         self.logic = logic
 
@@ -39,6 +40,26 @@ class UIHandler:
         self.folder_rules = []
         self.logic.bind_folder_rules(self.folder_rules)
 
+    def on_manual_clicked(self):
+        box = QMessageBox(self.window)
+        box.setWindowTitle("File Sorter Manual")
+        box.setStyleSheet("""
+                QLabel {
+                    font-size: 14px;
+                    font-family: Arial;
+                }
+                """)
+        box.setText("<p>Drag and drop files or folders in <b>Sorting Box</b> or "
+                    "click <b>Sorting Box</b> to manually select them instead.</p>"
+                    "<p>Double-click an added folder to open in explorer. "
+                    "Right-click the folder to bring up the options to "
+                    "remove it or edit the allowed extensions.</p>")
+
+        box.setOption(QMessageBox.DontUseNativeDialog, True)  # <-- force Qt dialog
+        box.setIcon(QMessageBox.NoIcon)  # <-- avoid Windows "info" beep
+        box.setStandardButtons(QMessageBox.Ok)
+
+        box.exec()
 
     def on_add_folder_clicked(self):
         """Open dialog to add a new destination folder and its allowed extensions."""
@@ -222,6 +243,8 @@ class UIHandler:
             })
 
         path.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+        print("JSON location: ", self._rules_path())
 
     def load_folder_rules(self) -> None:
         """Load folder_rules from disk if present."""
