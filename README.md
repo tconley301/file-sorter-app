@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/filesor_ui.png" width="450">
+  <img src="assets/filesor_ui.png" width="400">
 </p>
 
-# FileSorterApp
+# FileSor
 
-FileSorterApp is a desktop application that organizes files into user-defined folders
+FileSor is a desktop application that organizes files into user-defined folders
 based on allowed file extensions. Built with **Python** and **PySide6**, the app
 provides a clean UI and drag-and-drop support for easy file sorting.
 
@@ -23,7 +23,7 @@ provides a clean UI and drag-and-drop support for easy file sorting.
 ### 1. Navigate to the project directory
 Make sure your terminal is in the root folder:
 
-    cd FileSorterApp
+    cd FileSor
 
 ### 2. Select the virtual environment interpreter
 In PyCharm:
