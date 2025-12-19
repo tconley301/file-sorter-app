@@ -1,5 +1,0 @@
-How to setup venv
-
-Make sure terminal cd is FileSorterApp
-Change interpreter to the venv; May need to go to File -> Settings -> Python -> Interpreter -> Select existing interpreter
-Close and reopen terminal to show "(.venv) PS C:\Users\..."
